@@ -1,0 +1,222 @@
+@import "bootstrap";
+
+// The custom css for all the pages. 
+// Soon you will be able to change the code in the
+// admin CP
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.go-right {
+  float: right !important;
+}
+
+/* typography */
+
+a:link, a:visited, a:active { 
+  text-decoration: none; 
+  color: #000000; 
+  &:hover { 
+    color: #465584; 
+    text-decoration:none;
+    background: transparent;
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* Forums */
+
+.fborder{
+  border:0px solid #000000;
+  background: #000000;
+}
+
+/* #800080 */
+.maintitle {
+  background-color: #333366;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 11px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  a:link, a:visited, a:active{
+    color: #FFFFFF;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: #FFFFFF;
+      background: transparent;
+    }
+  }
+}
+
+.subforum {
+  background-color: #cccccc;
+  font-size: 9px;
+  text-transform: uppercase;
+  padding:3px; 
+  a:link, a:visited, a:active{
+    color: #000000;
+    text-decoration: none;
+    &:hover{
+      text-decoration: none;
+      background: transparent;
+    }
+  }
+}
+
+.row1{
+  background: #F2F2F2;
+  font-size: 11px;
+  padding: 8px;
+}
+
+.row2{
+  background: #F2F2F2;
+  font-size: 11px;
+  padding: 5px;
+  padding-left:30px;
+
+}
+  
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}

@@ -1,0 +1,28 @@
+<!-- When you post, this is where it takes you. The lovely form.  -->
+
+<%= form_for(@post) do |f| %>
+	<% if params[:topic] %>
+	<input type="hidden" 
+	id="topic_forum_id"
+	name="post[topic_id]" 
+	value="<%= params[:topic] %>" />
+	<% end %>
+
+	<tr>
+	<td class="row1">
+
+	<%= f.label :content %><br />
+    <%= f.text_area :content, :rows => "10", class: 'wysihtml5' %>
+
+	<% if params[:reply_to_id] %>
+	  <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
+	<% end %>
+
+	
+    <Br /><center> <%= f.submit "Submit Post", class: "buttons" %></center>
+ </td>
+</tr>
+
+<% end %>
+
+

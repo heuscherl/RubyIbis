@@ -1,0 +1,10 @@
+	<!--  This is the page that will list all the stylesheets you will eventually be able to edit.   -->
+
+	<div class="maintitle">Manage Stylesheets</div>
+  	<div class="row1">
+  	<% @stylesheets.each do |stylesheet| %>
+  				<%= link_to 'Edit CSS', edit_admin_stylesheet_path(stylesheet) %> 
+ 
+  	<% end %>
+
+  </div>

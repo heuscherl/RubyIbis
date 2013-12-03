@@ -1,0 +1,35 @@
+<!-- Registration page.  -->
+<% provide(:title, 'Sign up') %>
+
+<table border="0" cellspacing="1" cellpadding="0" class="fborder">
+<tr>
+<td class="maintitle">Register</td>
+</tr>
+
+<tr>
+<td class="subforum">Required
+</td>
+</tr> 
+
+<tr>
+<td class="row1">
+  	<%= render 'shared/error_messages' %>
+	    <%= form_for(@user) do |f| %>
+
+	      <%= f.label :name %><br>
+	      <%= f.text_field :name %><br>
+
+	      <%= f.label :email %><br>
+	      <%= f.text_field :email %><br>
+
+	      <%= f.label :password %><br>
+	      <%= f.password_field :password %><br>
+
+	      <%= f.label :password_confirmation, "Confirmation" %><br>
+	      <%= f.password_field :password_confirmation %>
+
+	      <%= f.submit "Create my account", class: "buttons" %>
+    <% end %>
+</td>
+</tr>
+</table>

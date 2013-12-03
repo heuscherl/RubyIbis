@@ -1,0 +1,33 @@
+<!-- listing users.  -->
+<table width="100%" cellspacing="1" cellpadding="0" class="fborder">
+   	<tr>
+   		<td class="maintitle" colspan="4">Users</td>
+   	</tr>
+   	<tr>
+   		<td class="subforum">Username</td>
+   		<td class="subforum" width="25%">Joined</td>
+   		<td class="subforum" width="25%">Last Online</td>
+   		<td class="subforum" width="10%">Post Count</td>
+   	</tr>
+    
+    <%= will_paginate %>
+
+  	<% @users.each do |user| %>
+  		<tr>
+  			<td class="row1">  
+  				<%= link_to user.name, user %> 
+  			</td>
+  			<td class="row1">
+  				<%= user.created_at %>
+  			</td>
+  			<td class="row1">
+  				<%= user.updated_at %>
+  			</td>
+  			<td class="row1">
+  				<%= user.posts.count%>
+  			</td>
+  		</tr>
+  	<% end %>
+    <%= will_paginate %>
+
+</table>

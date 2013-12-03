@@ -1,0 +1,73 @@
+<!-- Editing your user profile  -->
+
+<% provide(:title, @user.name) %>
+<div class="maintitle">
+    <%= link_to "Home", root_path %>
+     &raquo; <%= @user.name %>
+
+</div> <Br />
+
+<table border="0" cellspacing="1" cellpadding="0" class="fborder">
+<tr>
+<td class="maintitle">Edit <%= @user.name %></td>
+</tr>
+
+<tr>
+<td class="subforum">Required
+</td>
+</tr> 
+
+<tr>
+<td class="row1">
+
+  	
+	   <%= form_for @user, :html => {:multipart => true } do |f| %>
+
+	      <%= f.label :name %><br>
+	      <%= f.text_field :name%><br>
+
+	      <%= f.label :email %><br>
+	      <%= f.text_field :email %><br>
+
+	      <%= f.label :password %><br>
+	      <%= f.password_field :password %><br>
+
+	      <%= f.label :password_confirmation, "Confirmation" %><br>
+	      <%= f.password_field :password_confirmation %><br>
+</td>
+</tr>
+
+<tr>
+<td class="subforum">Optional</td>
+</tr> 
+
+<tr>
+<td class="row1">
+
+
+	      <%= f.label "avatar" %><Br>
+	      <%= f.file_field :avatar %><br>
+
+	      <%= f.label :location %><br>
+	      <%= f.text_field :location %><br>
+
+	      <%= f.label :website %><br>
+	      <%= f.text_field :website %><br>
+
+	      <%= f.label :birthday %><br>
+	      <%= f.date_select :birthday,
+	      	order: [:month, :day, :year],
+	      	prompt: { month: 'Select Month', day: 'Select Day', year: 'Select Year' },
+	      	:start_year => Time.now.year - 100,
+    	  	:end_year => Time.now.year %><br><br>
+
+    	  <%= f.label :biblography %><br>
+	      <%= f.text_area :biblography, :rows => "7" %><br><br>
+
+	      	     <center> <%= f.submit "Edit Account", class: "buttons" %></center>
+	  </td>
+</tr>
+
+</table>	      
+
+    <% end %>

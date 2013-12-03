@@ -1,0 +1,38 @@
+<!-- This is what builds the css. 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ruby Ibis  <%= yield(:title) %></title>
+
+  <!-- DO NOT REMOVE!!!!!!!! This is what allows a user to edit the layout. -->
+  <link href="/admin/stylesheets/1/" media="screen" rel="stylesheet" type="text/css" />
+
+
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+
+   <%= render 'layouts/shim' %>
+
+  </head>
+
+   <body>
+    <%= render 'layouts/header' %>
+
+      <!-- Flash notices. -->
+      <% flash.each do |key, value| %>
+        <div id="notice"><%= value %></div><br>
+      <% end %>
+
+
+        <%= yield %>
+
+
+
+      <%= render 'layouts/footer' %>
+    <!--   <%= debug(params) if Rails.env.development? %> -->
+    </div>
+  </body>
+</html>

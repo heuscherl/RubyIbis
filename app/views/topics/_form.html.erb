@@ -1,0 +1,36 @@
+<!-- The form to create or edit a new topic.  -->
+
+<%= render 'shared/error_topic' %>
+<%= form_for(@topic) do |f| %>
+
+<!-- Do not remove. This stores where the forum needs to be placed -->
+  <% if params[:forum] %>
+    <input type="hidden" 
+    id="topic_forum_id" 
+    name="topic[forum_id]" 
+    value="<%= params[:forum] %>" />
+  <% end %>  
+
+<tr>
+<td class="row1">
+
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :description %><br>
+    <%= f.text_field :description %><br>
+
+
+  <%= f.fields_for :posts do |p| %>
+
+   <%= p.hidden_field :user_id, :value => current_user.id %>
+
+    <%= p.label :content %><br />
+    <%= p.text_area :content, :rows => "10" %>
+
+  <% end %>
+  <center><br><%= f.submit :class => "buttons" %></center>
+<% end %>
+
+</td>
+</tr>

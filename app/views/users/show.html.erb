@@ -1,0 +1,68 @@
+<!-- Showing teh list of users.  -->
+
+<% provide(:title, @user.name) %>
+<div class="maintitle">
+    <%= link_to "Home", root_path %>
+     &raquo; <%= @user.name %>
+
+</div> <Br />
+
+<table border="0" cellspacing="1" cellpadding="0" class="fborder">
+<tr>
+<td class="maintitle" colspan="2"><%= @user.name %></td>
+</tr>
+
+<tr>
+<td class="subforum" colspan="2"><span style="float: right; padding-left:0px;">View all Posts
+</td>
+</tr> 
+
+<tr><td colspan="2">
+<table cellpadding='0' align="center" cellspacing='0' border='0' width="100%">
+  <tr>
+    <td width='50%' valign='top'>
+      <table cellspacing="0" cellpadding='0' width='100%'>    
+        <tr>
+          <td class="labels" width="30%" align="left" valign="top"><strong>Birthday:</strong> </td>
+          <td align='left' width='70%' class='row3' style="padding-left:2px;"><%= @user.birthday %> 
+          	<%= @user.age(@user.birthday) %> </td>
+        </tr>
+        <tr>
+          <td class="labels" width="30%" align="left" valign="top"><b>Website:</b></td>
+          <td align='row1' width='70%' class='row3' style="padding-left:2px;"><%= @user.website %></td>
+        </tr>
+      </table>
+    <td width='50%' valign='top'>
+      <table cellspacing="0" cellpadding='0' width='100%'>
+        <tr>
+          <td class="labels" width="30%" align="left" valign="top"><b>Location:</b></td>
+          <td align='row1' width='70%' class='row3' style="padding-left:2px;"><%= @user.location %></td>
+        </tr>
+        <tr>
+          <td class="labels" width="30%" align="left" valign="top"><strong>Email:</strong> </td>
+          <td align='left' width='70%' class='row3' style="padding-left:2px;"><%= @user.email %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellpadding='0' align="center" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td class="subforum"> Biography</td>
+</tr>
+<tr>
+<td class="row2" valign="top" style="padding:15px;">
+<div style="float: right; margin-left: 5px;"> <%= image_tag @user.avatar.url(:normal) %></div> 
+
+<%= @user.biblography %><br><br>
+
+<strong><%= @user.name %></strong> joined on <%= @user.created_at %>  and last visited on <%= @user.updated_at %>.  They have made a total of  <%= @user.posts.count%>  posts.
+</td></tr>
+</table>
+</td></tr>
+</table>
+
+
+
+
+

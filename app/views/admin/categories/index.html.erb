@@ -1,0 +1,53 @@
+<!-- HTML page to show the categories and forums listed.  -->
+
+<%= notice %>
+
+<%= link_to 'New Category', new_admin_category_path, :class => "buttons" %> 
+ <%= link_to 'New Forum', new_admin_forum_path, :class => "buttons" %> <br><br>
+
+<div class="maintitle">Forum Management</div>
+<table width="100%" cellspacing="1" cellpadding="0" class="fborder">
+  <tr>
+    <td class="subforum"> Forum </td>
+    <td class="subforum" width="10%"> Order </td>
+    <td class="subforum" width="20%" align="center"> Options </td>
+  </tr>
+ <tr><td width="100%" colspan="3">
+
+  <% @categories.each do |category| %>
+    <table width="100%" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="row1">
+          <%= link_to category.name, admin_category_path(category) %> 
+        </td>
+        <td class="row1">
+          <div class="go-right">
+            <%= link_to ' (Edit', edit_admin_category_path(category) %> 
+            <%= link_to '| Destroy)', admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+      </tr>
+
+      <% category.forums.each do |forum| %>
+        <tr>
+          <td class="row2">
+            <%= link_to forum.name, admin_forum_path(forum) %> <br>
+            <%= forum.description %>
+
+          </td>
+          <td class="row1"> 
+
+            <div class="go-right">
+                <%= link_to "(Edit | ", edit_admin_forum_path(forum) %> 
+                <%= link_to "Destroy)", admin_forum_path(forum), :confirm => 'Are you sure?', :method => :delete %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </table> 
+  <% end %>
+
+</td>
+</tr>
+</table>
+

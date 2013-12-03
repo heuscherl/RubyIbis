@@ -1,0 +1,29 @@
+<% provide(:title, "Sign in") %>
+
+<table border="0" cellspacing="1" cellpadding="0" class="fborder">
+<tr>
+<td class="maintitle">Sign In</td>
+</tr>
+
+<tr>
+<td class="subforum"> 
+</td>
+</tr> 
+
+<tr>
+<td class="row1">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :email %><br>
+      <%= f.text_field :email %><Br>
+
+      <%= f.label :password %><br>
+      <%= f.password_field :password %><br>
+
+      <%= f.submit "Sign in", class: "buttons" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+</td>
+</tr>
+</table>

@@ -1,0 +1,36 @@
+<!-- This is the header and logo. Banners or anything you wish to show on all the pages will be placed here.  -->
+
+<header class="navbar">
+  <div class="navbar-inner">
+      <%= link_to "Ruby Ibis", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home",    root_path %></li>
+          <li><%= link_to "Help",    help_path %></li>
+          <li><%= link_to "Member List", users_path %></li>
+          <li><%= link_to "Search" %></li>
+        </ul>
+      </nav>
+  </div>
+</header>
+
+<br/>
+
+<div class="container">
+  <div class="row1">
+    <%# if the user is signed in, offer log out and view profile #%>
+
+    <% if signed_in? %>
+      Welcome Back, 
+      <%= link_to current_user.name, current_user %>.
+      (<%= link_to "Edit Profile", edit_user_path(current_user) %> - 
+      <% if admin? %><%= link_to "ACP", admin_path %> - <% end %> 
+      <%= link_to "Sign out", signout_path, method: "delete" %>)
+    <% else %>
+    Welcome! Please 
+      <%= link_to "Sign in", signin_path %> -
+      <%= link_to "Register", signup_path %>
+    <% end %>
+  </div> <br />
+
+

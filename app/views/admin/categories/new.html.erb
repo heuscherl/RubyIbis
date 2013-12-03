@@ -1,0 +1,31 @@
+<!-- Creating a new category HTML page. -->
+<div class="maintitle">
+	<%= link_to 'Back', admin_categories_path %> 
+</div>
+
+<table border="0" cellspacing="1" cellpadding="0" class="fborder">
+<tr>
+<td class="maintitle">New Forum</td>
+</tr>
+
+<tr>
+<td class="subforum">
+</td>
+</tr> 
+
+<tr>
+<td class="row1">
+
+<%= form_for([:admin,@category]) do |f| %>
+
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  
+    <center><%= f.submit "Create Category", class: "buttons" %></center>
+  
+<% end %>
+
+
+</td>
+</tr>
+</table>

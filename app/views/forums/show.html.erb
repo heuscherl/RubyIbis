@@ -1,0 +1,78 @@
+<!-- Shows the forums.  -->
+
+<div class="maintitle">
+    <%= link_to "Home", root_path %>
+     &raquo; <%= @forum.name %>
+
+</div> <Br />
+
+<% if signed_in? %>
+    <div class="go-right">  
+        <%= link_to "New Topic", "/topics/new?forum=#{@forum.id}", :class => "buttons" %><br><Br>
+    </div>
+<% end %> 
+
+<table width="100%" cellspacing="1" cellpadding="0" class="fborder">
+	<tr>
+    	<td class="maintitle" colspan="4">
+ 		 <%= @forum.name %>
+
+ 		</td>
+ 	</tr>
+
+ 	<tr>
+    <td class="subforum" width="55%">
+    	Topic Title
+ 		</td>
+ 		<td class="subforum" width="10%" align="center">
+    	Replies
+ 		</td>
+    <td class="subforum" align="center">
+      Last Post
+    </td>
+    <% if admin? %>
+      <td class="subforum" width="5%"> 
+        Options
+      </td>
+    <% end %>
+ 	</tr>
+
+<!-- List all the topics. -->
+ 	<% @forum.topics.sort_by{|t| - t.last_post_at.to_i}.each do |topic| %>
+    <tr>
+      <td class="row1">    
+     		<%= link_to topic.name, topic %> 
+     		<small><%= topic.description %></small>
+      </td>
+      <td class="row1" align="center">
+        <%= topic.posts.count %>
+      </td>
+      <td class="row1" align="center">
+
+        <!-- Find most recent post to show.  -->
+      <% if @forum.most_recent_post %>
+        <%= distance_of_time_in_words_to_now topic.last_post_at %> ago 
+        by <%= link_to (topic.posts.last.user.name), "/users/#{topic.last_poster_id}" %> 
+
+      <% else %>
+       no posts
+      <% end %>
+      </td>
+
+      <% if signed_in? %>
+        <% if admin? %>
+          <td class="row1">
+            <%= link_to "Delete", topic, :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+          <% end %>
+      <% end %>
+    </tr>
+  <%end%>
+
+ </table>
+
+<% if signed_in? %>
+    <div class="go-right">  
+        <br><%= link_to "New Topic", "/topics/new?forum=#{@forum.id}", :class => "buttons" %>
+    </div>
+<% end %> 

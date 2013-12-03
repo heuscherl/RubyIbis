@@ -1,0 +1,55 @@
+<!-- If you click on a category, this is what shows.  -->
+
+<div class="maintitle">
+    <%= link_to "Home", root_path %>
+     &raquo; <%= @category.name %>
+
+</div> <Br />
+
+
+<table width="100%" cellspacing="1" cellpadding="0" class="fborder">
+	<tr>
+    	<td class="maintitle" colspan="3">
+ 		 <%= @category.name %>
+
+ 		</td>
+ 	</tr>
+
+    <% @category.forums.each do |forum| %>
+
+        <tr>
+          <td class="subforum" colspan="3">
+            <%= link_to forum.name, forum %>
+          </td>
+        </tr>
+        <tr>
+          <td class="row1"> 
+            <%= forum.description %>
+          </td>
+
+          <td class="row1" width="10%"> 
+            <% if forum.topics.count == 1 %>
+              <%= forum.topics.count %> topic
+            <% else %>
+              <%= forum.topics.count %> threads
+            <% end %>
+
+          </td>
+
+          <td class="row1" width="25%" align="center"> 
+            
+            <!-- Find the most recent posts. -->
+            <% if forum.most_recent_post %>
+      
+              <%= distance_of_time_in_words_to_now forum.most_recent_post.last_post_at %> ago by
+              <%= link_to forum.most_recent_post.posts.last.user.name, "/users/#{forum.most_recent_post.last_poster_id}" %> 
+
+            <% else %>
+              no posts
+            <% end %>
+
+          </td>
+        </tr>
+      <% end %>
+    </table> <br />
+

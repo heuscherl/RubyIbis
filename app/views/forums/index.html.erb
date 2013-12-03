@@ -1,0 +1,41 @@
+<!-- Shows forums.  -->
+
+<div class="maintitle">
+	<%= link_to 'Back', forums_path %>
+</div> 
+
+
+<table width="100%" cellspacing="1" cellpadding="0" class="fborder">
+	<tr>
+    	<td class="maintitle" colspan="2">
+ 		 <%= @forum.name %>
+
+ 		</td>
+ 	</tr>
+
+ 	<tr>
+    	<td class="subforum" width="80%">
+    		Threads
+ 		</td>
+ 		<td class="subforum">
+    		Options
+ 		</td>
+ 	</tr>
+
+ 	<% @forum.topics.each do |topic| %>
+          <td class="row1">    
+   			<%= link_to topic.name, topic %> 
+   			<small><%= topic.description %></small>
+          </td>
+          <td class="row1"> 
+          	<%= link_to "(Show | ", topic %>
+          	<%= link_to "Edit | ", edit_topic_path(topic) %>
+          	<%= link_to "Destroy)", topic, :confirm => 'Are you sure?', :method => :delete %>
+          </td>
+        </tr>
+    <%end%>
+
+ </table>
+
+     <%= link_to "New Topic", "/topics/new?forum=#{@forum.id}" %>
+

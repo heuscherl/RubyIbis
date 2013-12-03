@@ -1,0 +1,85 @@
+<!-- To show threads and posts.  -->
+<% counter = 0 %> <!-- counter for first post (new thread) vs replies. -->
+
+<div class="maintitle">
+    <%= link_to "Home", root_path %>
+     &raquo; <%= link_to @topic.forum.name, @topic.forum %>
+     &raquo; <%= @topic.name %>
+
+</div> <Br />
+
+<% if signed_in? %>
+    <div class="go-right">  
+        <%= link_to "Reply", "#{new_post_path}?topic=#{@topic.id}", :class => "buttons" %><br /><br />
+    </div>
+<% end %> 
+
+<table width="100%" cellspacing="1" cellpadding="0" class="fborder">
+	<tr>
+    	<td class="maintitle" colspan="2">
+ 		 <%= @topic.name %>
+ 		 <small> <%= @topic.description %>
+ 		</td>
+ 	</tr>
+
+ 	<tr>
+    	<td class="subforum" colspan="2">
+              <time datetime="<%= @topic.created_at.to_s(:db) -%>"><%= "#{time_ago_in_words(@topic.created_at)} Ago" %></time>
+ 			<div class="go-right">
+                <!-- Must be logged in to edit and reply. -->
+                <% if signed_in? %>
+                    <% if current_user.id == @topic.user_id or admin? %>
+                        <%= link_to 'Edit', edit_topic_path(@topic) %> 
+                    <% end %>
+                     <% if admin? %>
+                        <%= link_to '- Delete', topic_path(@topic), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                <% end %>
+    		</div>
+ 		</td>
+ 	</tr>
+<% @topic.posts.each do |post| %>
+ 	<% if counter > 0 %>
+
+        <tr>
+	    	<td class="subforum" colspan="2">
+	    		<time datetime="<%= post.created_at.to_s(:db) -%>"><%= "#{time_ago_in_words(post.created_at)} Ago" %></time> 
+                <% if post.created_at != post.updated_at %>
+                    (Edited)
+                <% end %>
+	 			<div class="go-right">  
+                <% if signed_in? %>
+                    <% if (current_user.id == post.user_id) or admin? %>
+                        <%= link_to 'Edit', edit_post_path(post) %> 
+                    <% end %>
+                    <% if admin? %>
+                        <%= link_to '- Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                <% end %>
+
+	    		</div>
+	 		</td>
+ 		</tr>
+  <% end %>
+  <% counter += 1 %> 
+
+ 	<!-- Posting COntent.  -->
+ 		<tr>
+ 			<td class="row1" width="200px" align="center">
+                <h1><%= link_to post.user.name, user_path(post.user.id) %></h1>
+ 				
+                    <%= image_tag post.user.avatar.url(:normal) %>
+ 			</td>
+ 			<td class="row1" valign="top">
+              
+ 				<%= post.content %>
+ 			</td>
+ 		</tr>
+ 	<% end %>
+ </table>
+
+<% if signed_in? %>
+    <div class="go-right">  
+        <br /><%= link_to "Reply", "#{new_post_path}?topic=#{@topic.id}", :class => "buttons" %>
+    </div>
+<% end %> 
