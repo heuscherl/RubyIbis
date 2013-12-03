@@ -1,28 +1,21 @@
-== README
+README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 2.0
+Ruby on Rails 4.0
+Windows 7
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+INSTALLATION 
+  1) Download git repository (https://github.com/purpleglade/RubyIbis.git)
+  2) Drag RubyIbis folder to the desired location. 
+  3) Open up command line/Git Bash
+  4) cd into the RubyIbis folder
+  5) enter "rails s" into the console. 
+      a) it may ask you to install gems. if so, type in bundle install, wait for the
+	      gems to download, then type in "rails s"
+  6) In about 10-20 seconds, it should boot up
+  7) Go to localhost:3000 to access
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+ADMIN ACCOUNT
+   email: admin@berea.edu
+   password: adminpass
