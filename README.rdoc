@@ -11,7 +11,6 @@ INSTALLATION
   4) cd into the RubyIbis folder
   5) enter "rails s" into the console. 
       a) it may ask you to install gems. if so, type in bundle install and wait for gems to install.
-	  b) Type in rails s again. 
   6) In about 10-20 seconds, it should boot up
   7) Go to localhost:3000 to access
 
