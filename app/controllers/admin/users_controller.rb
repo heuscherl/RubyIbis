@@ -40,9 +40,6 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params_edit)
-      # @user.update_attributes(
-      # :name => params[:user][:name], 
-      # :email => params[:user][:email], 
       # :usergroup => params[:user][:usergroup])
           redirect_to admin_users_url
       else
@@ -67,7 +64,7 @@ class Admin::UsersController < ApplicationController
   # When editing your profile, show all this. 
   def user_params_edit
     params.require(:user).permit(:avatar, :name, :email, :password,
-                                   :password_confirmation, :birthday, :website, :biblography, :location)
+                                   :password_confirmation, :usergroup, :birthday, :website, :biblography, :location)
   end
     
     # Make sure only Administrators can access the ACP
