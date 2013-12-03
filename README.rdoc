@@ -23,4 +23,4 @@ WARNING
    You will be unable to resize avatars if ImagicMagick 6.8.7 is not installed on your <br> 
    computer and is pointed to the right location. To change location edit the
        config > environments > development.rb and edit this line:  
-	     Paperclip.options[:command_path] = "C:/Progra~1/IMAGEM~1.7-Q" to whereever the program execute for you
+	       Paperclip.options[:command_path] = "C:/Progra~1/IMAGEM~1.7-Q" to whereever the program execute for you
